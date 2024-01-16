@@ -20,9 +20,12 @@ public class App
             BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             DataOutputStream output = new DataOutputStream(socket.getOutputStream());
 
-            output.writeBytes("Ciao server" + "\n");
-            System.out.println("Il server ha risposto: " + input.readLine());
+            String ricevuta;
 
+            while(!(ricevuta = input.readLine()).equals("E")){
+                System.out.println(ricevuta);
+            }
+            
             socket.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
