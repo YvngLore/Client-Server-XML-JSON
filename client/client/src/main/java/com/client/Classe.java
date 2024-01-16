@@ -1,4 +1,4 @@
-package com.server;
+package com.client;
 
 public class Classe {
     private int anno;
@@ -51,3 +51,4 @@ public class Classe {
         return "Anno: " + anno + "\nSezione: " + sezione + "\nSpecializzazione: " + specializzazione + "\nZona: " + zona;
     }
 }
+

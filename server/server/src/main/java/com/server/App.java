@@ -5,6 +5,8 @@ import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 /**
  * Hello world!
  *
@@ -42,17 +44,33 @@ public class App
 
             BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             DataOutputStream output = new DataOutputStream(socket.getOutputStream());
-            
-            output.writeBytes(a1.toString() + "\n");
-            output.writeBytes(a2.toString() + "\n");
-            output.writeBytes(a3.toString() + "\n");
-            output.writeBytes(a4.toString() + "\n");
-            output.writeBytes(a5.toString() + "\n");
-            output.writeBytes(c1.toString() + "\n");
-            output.writeBytes(c2.toString() + "\n");
-            output.writeBytes(c3.toString() + "\n");
-            output.writeBytes(c4.toString() + "\n");
-            output.writeBytes("E\n");
+
+            XmlMapper xmlMapper = new XmlMapper();
+
+            //Conversioni nelle Stringhe XML
+            String alunno1 = xmlMapper.writeValueAsString(a1);
+            String alunno2 = xmlMapper.writeValueAsString(a2);
+            String alunno3 = xmlMapper.writeValueAsString(a3);
+            String alunno4 = xmlMapper.writeValueAsString(a4);
+            String alunno5 = xmlMapper.writeValueAsString(a5);
+            String classe1 = xmlMapper.writeValueAsString(c1);
+            String classe2 = xmlMapper.writeValueAsString(c1);
+            String classe3 = xmlMapper.writeValueAsString(c1);
+            String classe4 = xmlMapper.writeValueAsString(c1);
+
+            System.out.println("ESEMPIO --- \n");
+            System.out.println(alunno1);
+
+            output.writeBytes("A" + alunno1 + "\n");
+            output.writeBytes("A" + alunno2 + "\n");
+            output.writeBytes("A" + alunno3 + "\n");
+            output.writeBytes("A" + alunno4 + "\n");
+            output.writeBytes("A" + alunno5 + "\n");
+            output.writeBytes("C" + classe1 + "\n");
+            output.writeBytes("C" + classe2 + "\n");
+            output.writeBytes("C" + classe3 + "\n");
+            output.writeBytes("C" + classe4 + "\n");
+            output.writeBytes("E");
 
             System.out.println("Informazioni inviate con SUCCESSO!");
             
